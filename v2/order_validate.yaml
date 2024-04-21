@@ -1,0 +1,464 @@
+post:
+  summary: "POST v2/order/validate"
+  tags:
+    - "v2"
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            restaurant_id:
+              type: number
+            products:
+              type: array
+              items:
+                type: object
+                properties:
+                  restaurant_id:
+                    type: number
+                  products:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        uuid:
+                          type: string
+                        product_id:
+                          type: string
+                        materials:
+                          type: array
+                          items:
+                            type: string
+                        quantity:
+                          type: number
+                        offer:
+                          type: string
+                          nullable: true
+                        price:
+                          type: number
+                        total:
+                          type: number
+                  coupons:
+                    type: array
+                    items:
+                      type: string
+                  discount:
+                    type: array
+                    items:
+                      type: string
+                  amount:
+                    type: number
+                  payment_method:
+                    type: string
+                  payment_token:
+                    type: string
+                  address_id:
+                    type: number
+                  coordinates:
+                    type: object
+                    properties:
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+                  csr:
+                    type: string
+                    nullable: true
+                  small_order_fee:
+                    type: number
+                  attributes:
+                    type: array
+                    items:
+                      type: string
+                  transport_method:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      title:
+                        type: string
+                      value:
+                        type: string
+  responses:
+    "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              error_code:
+                type: string
+              message:
+                type: string
+              data:
+                type: object
+                properties:
+                  price:
+                    type: number
+                  price_without_discount:
+                    type: number
+                  coupon_discount:
+                    type: number
+                  coupon_valid:
+                    type: boolean
+                  discount:
+                    type: object
+                    properties:
+                      price:
+                        type: number
+                      description:
+                        type: string
+                  delivery_cost:
+                    type: number
+                  minimum_charge:
+                    type: number
+                  additional_taxes:
+                    type: number
+                  pvc_recycling_taxes:
+                    type: number
+                  tip:
+                    type: number
+                  csr:
+                    type: number
+                  has_free_delivery:
+                    type: boolean
+                  commissionable_price:
+                    type: number
+                  bags:
+                    type: object
+                    properties:
+                      count:
+                        type: number
+                      amount:
+                        type: number
+                  products_cost:
+                    type: number
+                  service_fee:
+                    type: number
+                  minimum_order_value:
+                    type: object
+                    properties:
+                      remainder_for_hard_move:
+                        type: number
+                      remainder_for_soft_move:
+                        type: number
+                      small_order_fee:
+                        type: number
+                  basked_based_delivery_cost:
+                    type: object
+                    properties:
+                      current_delivery_cost:
+                        type: number
+                  meta:
+                    type: object
+                    properties:
+                      total_payment_price:
+                        type: number
+                      joker_discount:
+                        type: number
+                      total_price_reduction_due_to_min_charge_exclusions:
+                        type: number
+                      discount_price_excluding_min_order:
+                        type: number
+                      weighted_products_extra_charge:
+                        type: number
+                      loyalty_cashback_bonus_points:
+                        type: number
+                      is_loyalty_cashback_enabled:
+                        type: boolean
+                  addons:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tag:
+                          type: string
+                        icon:
+                          type: string
+                        title:
+                          type: string
+                        value:
+                          type: string
+                        striked_through_value:
+                          type: string
+                  provisioning:
+                    type: object
+                    properties:
+                      ga:
+                        type: object
+                        properties:
+                          session:
+                            type: string
+                      date:
+                        type: string
+                        format: date
+                      images:
+                        type: object
+                        properties:
+                          small:
+                            type: string
+                            format: uri
+                          medium:
+                            type: string
+                            format: uri
+                          large:
+                            type: string
+                            format: uri
+                      chat:
+                        type: boolean
+                      joker:
+                        type: boolean
+                      facebook:
+                        type: boolean
+                      paypal:
+                        type: string
+                      credit_card:
+                        type: string
+                      applepay:
+                        type: string
+                      googlepay:
+                        type: string
+                      google:
+                        type: string
+                      sign_in_with_apple:
+                        type: boolean
+                      order_timeout:
+                        type: number
+                      review_days:
+                        type: number
+                      order_comments_max_len:
+                        type: number
+                      cancel_order_enabled:
+                        type: boolean
+                      cancel_order_timeout:
+                        type: number
+                      reminders:
+                        type: array
+                        items:
+                          type: string
+                      csr:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            logo:
+                              type: string
+                            header_image:
+                              type: string
+                            amounts:
+                              type: array
+                              items:
+                                type: number
+                            payment_methods:
+                              type: array
+                              items:
+                                $ref: '../schemas/PaymentMethodsEnum.yaml'
+                            mode:
+                              type: string
+                            title:
+                              type: string
+                            subtitle:
+                              type: string
+                            info_title:
+                              type: string
+                            info_subtitle:
+                              type: string
+                            cart_title:
+                              type: string
+                  order_attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        id:
+                          type: number
+                        description:
+                          type: string
+                        payment_methods:
+                          type: array
+                          items:
+                            $ref: '../openapi.yaml#/components/schemas/PaymentMethodsEnum'
+                        type:
+                          type: string
+                          enum: [
+                            'list'
+                          ]
+                        values:
+                          type: array
+                          description: "Values for the attribute"
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: number
+                                example: 0.5
+                              key:
+                                type: string
+                                example: "tip_050"
+                              description:
+                                type: string
+                        selected:
+                          type: number
+                        exclusions:
+                          type: array
+                          items:
+                            type: string
+                            enum: [
+                              'sklavenitis',
+                              'own_delivery',
+                              'agora',
+                              'supermarket',
+                              'darkstores'
+                            ]
+                        delivery_types:
+                          $ref: '../openapi.yaml#/components/schemas/DeliveryTypesEnum'
+                        transport_methods:
+                          $ref: '../openapi.yaml#/components/schemas/TransportMethodsEnum'
+                        meta:
+                          type: object
+                          properties:
+                            placement:
+                              type: string
+                              enum: [
+                                'payment_bottom',
+                              ]
+                            tracking_event_day:
+                              type: string
+                              enum: [
+                                'rider_tip',
+                              ]
+                            tracking_param_key:
+                              type: string
+                              enum: [
+                                'riderTipAmount',
+                              ]
+                        messages:
+                          type: object
+                          properties:
+                            icon:
+                              type: string
+                            theme_icon:
+                              type: string
+                            theme_animation:
+                              type: string
+                              example: "attribute:icon:money"
+                            title:
+                              type: string
+                            subtitle:
+                              type: string
+                            badge:
+                              type: object
+                            toast:
+                              type: object
+                              properties:
+                                true:
+                                  type: string
+                                false:
+                                  type: string
+                  settings:
+                    type: object
+                    properties:
+                      minimum_telephone_size:
+                        type: number
+                      image:
+                        type: object
+                        properties:
+                          optimization:
+                            type: boolean
+                  features:
+                    type: object
+                    properties:
+                      gamification:
+                        type: boolean
+                      shop_list:
+                        type: object
+                        properties:
+                          show_swimlanes:
+                            type: boolean
+                      checkout:
+                        type: object
+                        properties:
+                          show_cc_phone:
+                            type: boolean
+                          show_chat:
+                            type: boolean
+                      thankyou:
+                        type: object
+                        properties:
+                          show_cc_phone:
+                            type: boolean
+                          show_chat:
+                            type: boolean
+                  theme:
+                    type: object
+                    properties:
+                      selected:
+                        type: string
+                      available:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            hash:
+                              type: string
+                  messages:
+                    type: object
+                    properties:
+                      password_length:
+                        type: string
+                        example: 'Ο κωδικός σου πρέπει να είναι τουλάχιστον 8 χαρακτήρες και να περιλαμβάνει τουλάχιστον έναν αριθμό, ένα κεφαλαίο και ένα μικρό γράμμα.'
+                  id:
+                    type: string
+                  items:
+                    type: array
+                    description: "Items in the order"
+                    items:
+                      type: object
+                      properties:
+                        price:
+                          type: number
+                        discount:
+                          type: number
+                        quantity:
+                          type: number
+                        product_id:
+                          type: number
+                        description:
+                          type: string
+                        comment:
+                          type: string
+                        additional_tax_price:
+                          type: number
+                        pvc_recycling_tax_price:
+                          type: number
+                        uuid:
+                          type: string
+                        commissionable_price:
+                          type: number
+                        buffer_price:
+                          type: number
+                        calculated_quantity:
+                          type: number
+                        tags:
+                          type: array
+                          items:
+                            type: string
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  data:
+                    type: string

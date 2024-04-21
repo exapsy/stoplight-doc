@@ -1,0 +1,58 @@
+type: object
+properties:
+  uuid:
+    type: string
+    format: uuid
+  parent:
+    type: string
+  type:
+    type: string
+    enum: [
+      'banner:2.0:image'
+    ]
+  traits:
+    type: array
+    items:
+      type: string
+  attributes:
+    type: object
+    properties:
+      images:
+        type: object
+        description: All the images for any device that describe the banner
+        properties:
+          expanded:
+            type: string
+            description: Image url for expanded
+          full_width:
+            type: string
+            description: Image url for full width
+          standard:
+            type: string
+            description: Image url for standard
+      type:
+        type: string
+        description: Type of banner
+        enum: [
+          'Standard'
+        ]
+      title:
+        type: string
+        enum: [
+          null
+        ]
+  events:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        $ref: './DataComponentEvent.yaml'
+#  components:
+#    type: array
+#    items:
+#      $ref: './DataComponentBanner.yaml'
+  components:type:
+    type: string
+    enum: [
+      'banner:2.0:image'
+    ]

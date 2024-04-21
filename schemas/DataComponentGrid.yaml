@@ -1,0 +1,39 @@
+type: object
+properties:
+  uuid:
+    type: string
+    format: uuid
+  parent:
+    type: string
+  type:
+    type: string
+    enum: [
+      'grid:1.0:component'
+    ]
+  traits:
+    type: array
+    items:
+      type: string
+  attributes:
+    type: object
+    properties:
+      mode:
+        type: string
+      columns:
+        type: number
+        description: Amount of columns to be rendered in consumers (frontend)
+  events:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        $ref: './DataComponentEvent.yaml'
+  components:
+    type: array
+    items:
+      $ref: './DataComponentGridTile.yaml'
+  components:type:
+    type: string
+    enum: [
+      'tile:2.0:component'
+    ]

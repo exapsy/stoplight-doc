@@ -1,0 +1,50 @@
+post:
+  summary: "POST v3/reminders"
+  tags:
+    - v3
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            restaurant_id:
+              type: number
+              default: 0
+            products:
+              type: object
+              properties:
+                todo:
+                  type: number
+  responses:
+    "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              reminders:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                    title:
+                      type: string
+                    subtitle:
+                      type: string
+                    items_title:
+                      type: string
+                    logo:
+                      type: string
+                      description: url for logo
+                    items:
+                      type: array
+                      items:
+                        type: object
+                    offers:
+                      type: object
+                      items:
+                        type: object

@@ -1,0 +1,45 @@
+post:
+  summary: Get a render of a component
+  tags:
+    - v3
+  parameters:
+    - in: query
+      name: lang
+      description: Language locality
+      schema:
+        type: string
+    - in: header
+      name: accept-language
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            view:
+              type: string
+              description: Vertical's path
+            data:
+              type: object
+              properties:
+                vertical:
+                  type: string
+                  description: Vertical's key
+                vertical_name:
+                  type: string
+                  description: Vertical's name
+                latitude:
+                  type: number
+                  description: The latitude to render the vertical for
+                longitude:
+                  type: number
+                  description: The longitude to render the vertical for
+  responses:
+    '200':
+      description: Returns the rendered component
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/DataComponentsResponse.yaml'

@@ -1,0 +1,65 @@
+get:
+  summary: "Search endpoint"
+  description: "Search for restaurants, offers, items and sections"
+  tags:
+    - "v2"
+  parameters:
+    - name: "terms"
+      in: "query"
+      required: false
+      schema:
+        type: "string"
+    - name: "lon"
+      in: "query"
+      required: false
+      schema:
+        type: "number"
+    - name: "lat"
+      in: "query"
+      required: false
+      schema:
+        type: "number"
+    - name: "shop_ids"
+      in: "query"
+      required: false
+      schema:
+        type: "string"
+    - name: "vertical"
+      in: "query"
+      required: false
+      schema:
+        type: "string"
+    - name: "slug"
+      in: "query"
+      required: false
+      schema:
+        type: "string"
+  responses:
+    '200':
+      description: "Successful operation"
+      content:
+        application/json:
+          schema:
+            type: "object"
+            properties:
+              restaurants:
+                type: "array"
+                items:
+                  type: "object"
+              offers:
+                type: "array"
+                items:
+                  type: "object"
+              items:
+                type: "array"
+                items:
+                  type: "object"
+              sections:
+                type: "array"
+                items:
+                  type: "object"
+              meta:
+                type: "object"
+                properties:
+                  request_id:
+                    type: "string"

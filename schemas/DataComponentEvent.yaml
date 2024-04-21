@@ -1,0 +1,24 @@
+type: object
+properties:
+  $track_ga:
+    type: object
+    properties:
+      event_name:
+        type: string
+      event_params:
+        type: object
+        properties:
+          shopListType:
+            type: string
+          shopQuantityTotal:
+            type: string
+          shopQuantityShown:
+            type: string
+      success:
+        type: array
+        items:
+          type: string
+      failure:
+        type: array
+        items:
+          type: string

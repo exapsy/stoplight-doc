@@ -1,0 +1,9 @@
+type: array
+items:
+  type: string
+  enum: [
+    'delivery',
+    'skl_delivery',
+    'takeaway',
+  ]
+

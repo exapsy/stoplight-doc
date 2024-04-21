@@ -1,0 +1,4 @@
+description: The basic components that create the first parent hierarchies (grid, base)
+oneOf:
+  - $ref: './DataComponentGrid.yaml'
+  - $ref: './DataComponentSwimlane.yaml'

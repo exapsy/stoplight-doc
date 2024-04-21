@@ -1,0 +1,54 @@
+type: object
+properties:
+  ga:
+    type: object
+    properties:
+      session:
+        type: string
+  date:
+    type: string
+    format: date
+  images:
+    type: object
+    properties:
+      small:
+        type: string
+        format: uri
+      medium:
+        type: string
+        format: uri
+      large:
+        type: string
+        format: uri
+  chat:
+    type: boolean
+  joker:
+    type: boolean
+  facebook:
+    type: boolean
+  paypal:
+    type: string
+  credit_card:
+    type: string
+  applepay:
+    type: string
+  googlepay:
+    type: string
+  google:
+    type: boolean
+  sign_in_with_apple:
+    type: boolean
+  order_timeout:
+    type: integer
+  review_days:
+    type: integer
+  order_comments_max_len:
+    type: integer
+  cancel_order_enabled:
+    type: boolean
+  cancel_order_timeout:
+    type: integer
+  reminders:
+    type: array
+    items:
+      type: string

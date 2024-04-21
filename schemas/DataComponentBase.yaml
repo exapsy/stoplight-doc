@@ -1,0 +1,35 @@
+type: object
+properties:
+  uuid:
+    type: string
+    format: uuid
+  parent:
+    type: string
+  type:
+    type: string
+    enum: [
+      'base:1:0:component'
+    ]
+  traits:
+    type: array
+    items:
+      type: string
+  attributes:
+    type: object
+    properties:
+      title:
+        type: string
+        enum: [
+          null
+        ]
+  events:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        $ref: './DataComponentEvent.yaml'
+  components:type:
+    type: string
+    enum: [
+      'tile:2.0:component'
+    ]

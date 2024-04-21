@@ -1,0 +1,37 @@
+type: object
+properties:
+  uuid:
+    type: string
+    format: uuid
+  parent:
+    type: string
+  type:
+    type: string
+    enum: [
+      'swimlane:1.0:component'
+    ]
+  traits:
+    type: array
+    items:
+      type: string
+  attributes:
+    type: object
+    properties:
+      title:
+        type: string
+        description: Name of the swimlane
+  events:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        $ref: './DataComponentEvent.yaml'
+  components:
+    type: array
+    items:
+      $ref: './DataComponentBanner.yaml'
+  components:type:
+    type: string
+    enum: [
+      'banner:2.0:image'
+    ]

@@ -1,0 +1,50 @@
+type: object
+properties:
+  uuid:
+    type: string
+    format: uuid
+  parent:
+    type: string
+  type:
+    type: string
+    enum: [
+      'tile:2.0:component'
+    ]
+  traits:
+    type: array
+    items:
+      type: string
+  attributes:
+    type: object
+    properties:
+      title:
+        type: string
+      subtitle:
+        type: string
+      cover:
+        type: string
+        description: Cover image url for the tile
+      status:
+        type: string
+        enum: [
+          'active',
+          'inactive'
+        ]
+      is_vertical:
+        type: boolean
+        description: If the grid tile refers to a vertical or not
+  events:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        $ref: './DataComponentEvent.yaml'
+  components:
+    type: array
+    items:
+      $ref: './DataComponentBasic.yaml'
+  components:type:
+    type: string
+    enum: [
+      'void:1.0:null'
+    ]

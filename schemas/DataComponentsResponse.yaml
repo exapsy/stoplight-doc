@@ -1,0 +1,12 @@
+type: object
+properties:
+  status:
+    type: string
+  error_code:
+    type: string
+  message:
+    type: string
+  data:
+    $ref: './DataComponentsResponseData.yaml'
+  provisioning:
+    $ref: './DataComponentProvisioning.yaml'

@@ -1,0 +1,60 @@
+get:
+  summary: "Autocomplete endpoint"
+  description: "Autocomplete search terms"
+  tags:
+    - "v2"
+  parameters:
+    - name: "vertical"
+      in: "query"
+      required: false
+      schema:
+        type: "string"
+    - name: "shop_ids"
+      in: "query"
+      required: false
+      schema:
+        type: "string"
+    - name: "terms"
+      in: "query"
+      required: false
+      schema:
+        type: "string"
+    - name: "lon"
+      in: "query"
+      required: false
+      schema:
+        type: "number"
+    - name: "lat"
+      in: "query"
+      required: false
+      schema:
+        type: "number"
+  responses:
+    '200':
+      description: "Successful operation"
+      content:
+        application/json:
+          schema:
+            type: "object"
+            properties:
+              restaurants:
+                type: "array"
+                items:
+                  type: "object"
+              terms:
+                type: "array"
+                items:
+                  type: "string"
+              popular:
+                type: "array"
+                items:
+                  type: "string"
+              sections:
+                type: "array"
+                items:
+                  type: "object"
+              meta:
+                type: "object"
+                properties:
+                  request_id:
+                    type: "string"

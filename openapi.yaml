@@ -1,0 +1,70 @@
+openapi: 3.1.0
+
+info:
+  title: Test
+  description: Main API endpoint for most consumer services
+  version: 0.0.5
+  x-logo:
+    url: https://www.e-food.gr/site-assets/img/efood/logo.svg
+    altText: e-food logo
+
+servers:
+  - url: https://apistg.e-food.gr/
+    description: Staging server for qa/testing
+  - url: https://apistgrc.e-food.gr/
+    description: Staging server for release candidate
+  - url: https://api.e-food.gr
+    description: Optional server description, e.g. Internal staging server for testing
+  - url: http://localhost:3000
+    description: Local server
+
+paths:
+  /v2/health:
+    $ref: './v2/health.yaml'
+  /v2/disco/autocomplete:
+    $ref: './v2/disco_autocomplete.yaml'
+  /v2/disco/search:
+    $ref: './v2/disco_search.yaml'
+  /v3/data/components:
+    $ref: './v3/data_components.yaml'
+  /v3/reminders:
+    $ref: './v3/reminders.yaml'
+  /v2/order/validate:
+    $ref: './v2/order_validate.yaml'
+components:
+  schemas:
+    DataComponentsResponse:
+      $ref: './schemas/DataComponentsResponse.yaml'
+    DataComponentsResponseData:
+      $ref: './schemas/DataComponentsResponseData.yaml'
+    DataComponentBasic:
+      description: The basic components that create the first parent hierarchies (grid, base)
+      oneOf:
+        - $ref: '#/components/schemas/DataComponentGrid'
+        - $ref: '#/components/schemas/DataComponentSwimlane'
+    DataComponentEvent:
+      $ref: './schemas/DataComponentEvent.yaml'
+    DataComponentProvisioning:
+      $ref: './schemas/DataComponentProvisioning.yaml'
+    DataComponentBase:
+      $ref: './schemas/DataComponentBase.yaml'
+    DataComponentBanner:
+      $ref: './schemas/DataComponentBanner.yaml'
+    DataComponentSwimlane:
+      $ref: './schemas/DataComponentSwimlane.yaml'
+    DataComponentGrid:
+      $ref: './schemas/DataComponentGrid.yaml'
+    DataComponentGridTile:
+      $ref: './schemas/DataComponentGridTile.yaml'
+    DeliveryTypesEnum:
+      $ref: './schemas/DeliveryTypesEnum.yaml'
+    PaymentMethodsEnum:
+      $ref: './schemas/PaymentMethodsEnum.yaml'
+    TransportMethodsEnum:
+      $ref: './schemas/TransportMethodsEnum.yaml'
+
+tags:
+  - name: v2
+    description: Version 2 API
+  - name: v3
+    description: Version 3 API
